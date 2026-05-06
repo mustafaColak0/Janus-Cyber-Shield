@@ -28,9 +28,13 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 * **Paketleme:** PyInstaller
 
 ## 📸 Ekran Görüntüleri
-<img width="752" height="591" alt="waf" src="https://github.com/user-attachments/assets/0b11d4bc-a83a-448f-b5ab-b33a682b3222" />
-<img width="752" height="591" alt="waf" src="https://github.com/user-attachments/assets/dde1b33b-160d-44ae-98e7-0cd84c35b7f6" />
-<img width="1093" height="591" alt="ekran" src="https://github.com/user-attachments/assets/6368a9eb-8392-48b6-b664-32fa243c9f03" />
+<img width="513" height="282" alt="menü" src="https://github.com/user-attachments/assets/d1b89d75-4cc9-4c9d-bed4-c74a10389c84" />
+<img width="573" height="162" alt="attack" src="https://github.com/user-attachments/assets/1dc7669b-ddee-4fd5-953f-1ced4d2d168c" />
+<img width="1093" height="591" alt="ekran" src="https://github.com/user-attachments/assets/4653c1a0-d81d-4e75-abd3-565223de9276" />
+<img width="752" height="591" alt="waf" src="https://github.com/user-attachments/assets/c13dc261-fa03-44f9-802b-cf2d49835227" />
+<img width="1102" height="311" alt="hash" src="https://github.com/user-attachments/assets/b8154da9-ac83-45b8-92a0-0b262bd62c34" />
+
+
 
 
 | Menü Yapısı | Saldırı Tespiti |
