@@ -39,7 +39,7 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 
 | Menü Yapısı | Saldırı Tespiti |
 | :--- | :--- |
-| ![Janus Menu](https://github.com/mustafaColak0/Janus-Cyber-Shield/raw/main/menu_ss.png) | ![Attack Detect](https://github.com/mustafaColak0/Janus-Cyber-Shield/raw/main/attack_ss.png) |
+| ![Janus Menu](menu.png) | ![Attack Detect](attack.png) |
 
 ## ⚠️ Yasal Uyarı
 Bu araç tamamen eğitim ve siber güvenlik farkındalığı amacıyla geliştirilmiştir. Yetkisiz sistemlerde kullanılması yasal sorumluluk doğurabilir.
