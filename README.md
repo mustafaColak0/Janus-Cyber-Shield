@@ -29,9 +29,13 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 
 ## 📸 Ekran Görüntüleri
 <img width="513" height="282" alt="menü" src="https://github.com/user-attachments/assets/d1b89d75-4cc9-4c9d-bed4-c74a10389c84" />
+
 <img width="573" height="162" alt="attack" src="https://github.com/user-attachments/assets/1dc7669b-ddee-4fd5-953f-1ced4d2d168c" />
+
 <img width="1093" height="591" alt="ekran" src="https://github.com/user-attachments/assets/4653c1a0-d81d-4e75-abd3-565223de9276" />
+
 <img width="752" height="591" alt="waf" src="https://github.com/user-attachments/assets/c13dc261-fa03-44f9-802b-cf2d49835227" />
+
 <img width="1102" height="311" alt="hash" src="https://github.com/user-attachments/assets/b8154da9-ac83-45b8-92a0-0b262bd62c34" />
 
 
