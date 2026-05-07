@@ -12,13 +12,24 @@ Janus Cyber Shield, Python tabanlı geliştirilmiş, gerçek zamanlı ağ güven
 * **🤖 AI Siber Analiz Raporu:** Kırılamayan karmaşık hash yapıları için Llama 3/TinyLlama modelleri üzerinden teknik risk raporları ve güvenlik önerileri sunar.
 * **🌍 Coğrafi İstihbarat:** Saldırgan IP adreslerinin fiziksel konumlarını (Ülke/Kod) otomatik olarak sorgular.
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🛠️ Kurulum ve Çalıştırma (Windows)
 
 Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketlenmiştir.
 
 1.  `Releases` kısmından en güncel `JANUS_PANEL.zip` dosyasını indirin.
 2.  ZIP dosyasını bir klasöre çıkarın.
 3.  `JANUS_PANEL.exe` dosyasını çalıştırın.
+  ## 🐧Linux Kurulum ve Çalıştırma (Linux)
+  Janus v2.0, Linux tabanlı sistemlerde (Ubuntu, Debian, Kali, vb.) yerel Python ortamı üzerinden tam performansla çalışır.
+
+### 1. Gereksinimlerin Kurulması
+Sistemin savunma yapabilmesi için `ufw` (Firewall) ve Python paket yöneticisinin kurulu olması gerekir:
+```bash
+sudo apt update
+sudo apt install python3 python3-pip ufw -y
+
+  
+
 
 > **Önemli:** Programın çalışması için `wordlist.txt` ve `access.log` dosyalarının exe ile aynı dizinde bulunması gerekmektedir.
 
