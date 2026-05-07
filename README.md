@@ -20,8 +20,6 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 2.  ZIP dosyasını bir klasöre çıkarın.
 3.  `JANUS_PANEL.exe` dosyasını çalıştırın.
 
-> **Önemli:** Programın çalışması için `wordlist.txt` ve `access.log` dosyalarının exe ile aynı dizinde bulunması gerekmektedir.
-
 ## 🐧 Linux Kurulum ve Çalıştırma
 Janus v2.0, Linux tabanlı sistemlerde (Ubuntu, Debian, Kali, vb.) yerel Python ortamı üzerinden tam performansla çalışır.
 
@@ -51,6 +49,8 @@ Sistem dosyalarına müdahale ve Firewall kuralı ekleme yetkisi için Janus Lin
 ```
 sudo python3 analiz.py
 ```
+
+> **Önemli:** Programın çalışması için `wordlist.txt` ve `access.log` dosyalarının exe ile aynı dizinde bulunması gerekmektedir.
 
 ## 💻 Teknolojiler
 
