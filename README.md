@@ -1,8 +1,8 @@
-# 🛡️ Janus Cyber Shield v1.0
+#  Janus Cyber Shield v1.0
 
 Janus Cyber Shield, Python tabanlı geliştirilmiş, gerçek zamanlı ağ güvenliği analizi ve gelişmiş hash kırma yeteneklerine sahip bir **Siber Güvenlik Paneli**'dir. Hem savunma (Mavi Takım) hem de saldırı (Kırmızı Takım) konseptlerini tek bir arayüzde birleştirir.
 
-## 🚀 Temel Özellikler
+## Temel Özellikler
 
 * **🔍 Canlı Log & Otomatik Savunma:** `access.log` dosyalarını gerçek zamanlı izleyerek `etc/passwd`, `powershell` ve `SQL Injection` gibi saldırı girişimlerini anında tespit eder.
 * Honeypot Veritabanı İzleme: Sistem, honeypot.db dosyasını (tuzak veritabanını) canlı olarak dinliyor. Oraya birisi "yanlış kapıyı çalmaya" çalıştığı an (SQL Injection veya yetkisiz erişim denemesi), sistem bunu anlık yakalıyor.
