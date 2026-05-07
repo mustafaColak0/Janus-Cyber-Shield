@@ -91,8 +91,13 @@ def monitor_ips_otomatik():
         pass
 
 def GERCEK_BAN_AT(ip):
-    rule_name = f"Janus_Block_{ip}"
-    komut = f'netsh advfirewall firewall add rule name="{rule_name}" dir=in action=block remoteip={ip}'
+    """Platformu tespit eder ve uygun Firewall kuralini ekler."""
+    if os.name == 'nt': # Windows ise
+        rule_name = f"Janus_Block_{ip}"
+        komut = f'netsh advfirewall firewall add rule name="{rule_name}" dir=in action=block remoteip={ip}'
+    else: # Linux/Unix ise
+        komut = f'sudo ufw deny from {ip}'
+    
     return os.system(komut) == 0
 
 def istihbarat_modu(otomatik=False):
