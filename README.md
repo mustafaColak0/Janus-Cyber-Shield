@@ -5,6 +5,8 @@ Janus Cyber Shield, Python tabanlı geliştirilmiş, gerçek zamanlı ağ güven
 ## 🚀 Temel Özellikler
 
 * **🔍 Canlı Log & Otomatik Savunma:** `access.log` dosyalarını gerçek zamanlı izleyerek `etc/passwd`, `powershell` ve `SQL Injection` gibi saldırı girişimlerini anında tespit eder.
+* Honeypot Veritabanı İzleme: Sistem, honeypot.db dosyasını (tuzak veritabanını) canlı olarak dinliyor. Oraya birisi "yanlış kapıyı çalmaya" çalıştığı an (SQL Injection veya yetkisiz erişim denemesi), sistem bunu anlık yakalıyor.
+* Log Analizine Dayalı Savunma: `access.log` dosyaları, bu honeypot'a gelen ham trafik kayıtlarıdır. Yani sistem, honeypot'a gelen bu canlı "log akışını" analiz ederek saldırganı deşifre ediyor.
 * **🚫 Otomatik Güvenlik Duvarı:** Tespit edilen saldırgan IP adreslerini Windows Firewall (netsh) üzerinden otomatik olarak mühürler.
 * **🔐 Çilingir Modu (Hash Cracker):** MD5, SHA-256 ve SHA-512 algoritmalarını destekleyen hibrit bir kırma motoru kullanır.
 * **🤖 AI Siber Analiz Raporu:** Kırılamayan karmaşık hash yapıları için Llama 3/TinyLlama modelleri üzerinden teknik risk raporları ve güvenlik önerileri sunar.
