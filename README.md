@@ -39,7 +39,7 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 
 | Menü Yapısı | Saldırı Tespiti |
 | :--- | :--- |
-| ![Janus Menu](menu.png) | ![Attack Detect](attack.png) |
+| ![Janus Menu](resimler/menu.png) | ![Attack Detect](resimler/attack.png) |
 
 ## ⚠️ Yasal Uyarı
 Bu araç tamamen eğitim ve siber güvenlik farkındalığı amacıyla geliştirilmiştir. Yetkisiz sistemlerde kullanılması yasal sorumluluk doğurabilir.
