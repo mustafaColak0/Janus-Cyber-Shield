@@ -34,7 +34,7 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 <img width="946" height="186" alt="waf" src="https://github.com/user-attachments/assets/724b48ac-7213-4671-844a-4adb7f777b2e" />
 <img width="1102" height="311" alt="hash" src="https://github.com/user-attachments/assets/b8154da9-ac83-45b8-92a0-0b262bd62c34" />
 
-| :--- | :--- |
+| :--- :--- ------------------------------------------------------------------------------------------------------------- :--- :--- |
 
 
 ## ⚠️ Yasal Uyarı
