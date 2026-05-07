@@ -22,6 +22,26 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 
 > **Önemli:** Programın çalışması için `wordlist.txt` ve `access.log` dosyalarının exe ile aynı dizinde bulunması gerekmektedir.
 
+## 🐧 Linux Kurulum ve Çalıştırma
+Janus v2.0, Linux tabanlı sistemlerde (Ubuntu, Debian, Kali, vb.) yerel Python ortamı üzerinden tam performansla çalışır.
+
+1.Gereksinimlerin Kurulması 
+Sistemin savunma yapabilmesi için:
+sudo apt update && sudo apt install python3 python3-pip ufw -y
+
+2.Bağımlılıkların Yüklenmesi
+Proje klasörüne gidin ve gerekli kütüphaneleri yükleyin:
+
+pip3 install requests python-dotenv
+
+3.Savunma Sistemini Hazırlama (Önemli)
+Janus'un IP engelleme yapabilmesi için Linux güvenlik duvarının aktif olması gerekir:
+sudo ufw enable
+
+4.Janus'u Başlatma
+Sistem dosyalarına müdahale ve Firewall kuralı ekleme yetkisi için Janus Linux'ta root yetkisiyle çalıştırılmalıdır:
+sudo python3 analiz.py
+
 ## 💻 Teknolojiler
 
 * **Dil:** Python 3.12+
