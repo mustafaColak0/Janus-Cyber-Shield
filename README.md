@@ -19,17 +19,6 @@ Proje, bağımlılık sorunlarını minimize etmek adına **EXE** olarak paketle
 1.  `Releases` kısmından en güncel `JANUS_PANEL.zip` dosyasını indirin.
 2.  ZIP dosyasını bir klasöre çıkarın.
 3.  `JANUS_PANEL.exe` dosyasını çalıştırın.
-  ## 🐧Linux Kurulum ve Çalıştırma (Linux)
-  Janus v2.0, Linux tabanlı sistemlerde (Ubuntu, Debian, Kali, vb.) yerel Python ortamı üzerinden tam performansla çalışır.
-
-### 1. Gereksinimlerin Kurulması
-Sistemin savunma yapabilmesi için `ufw` (Firewall) ve Python paket yöneticisinin kurulu olması gerekir:
-```bash
-sudo apt update
-sudo apt install python3 python3-pip ufw -y
-
-  
-
 
 > **Önemli:** Programın çalışması için `wordlist.txt` ve `access.log` dosyalarının exe ile aynı dizinde bulunması gerekmektedir.
 
