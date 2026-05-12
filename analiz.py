@@ -33,7 +33,7 @@ def menu_goster():
 def ulke_bul(ip):
     """IP adresinin ulkesini sorgular."""
     try:
-        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=3).json()
+        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=3, verify=True)
         if response.get("status") == "success":
             return f"{response.get('country')} ({response.get('countryCode')})"
         return "Bilinmiyor"
@@ -117,7 +117,13 @@ def john_the_ripper_logic(target_hash, algo):
         with open(WORDLIST_FILE, "r", encoding="utf-8", errors="ignore") as f:
             for satir in f:
                 kelime = satir.strip()
-                if hashlib.new(algo, kelime.encode()).hexdigest() == target_hash:
+                if algo == "md5":
+                    h = hashlib.md5(kelime.encode()).hexdigest()
+                elif algo == "sha256":
+                    h = hashlib.sha256(kelime.encode()).hexdigest()
+                elif algo == "sha512":
+                    h = hashlib.sha512(kelime.encode()).hexdigest()
+                if h == target_hash:
                     return kelime
 
     # 2. JOHN THE RIPPER MOTORU (Yol varsa)
