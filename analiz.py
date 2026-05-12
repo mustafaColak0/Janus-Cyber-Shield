@@ -28,16 +28,18 @@ def menu_goster():
     #   [0] CIKIS                            #
     ++++++++++++++++++++++++++++++++++++++++++\033[0m
     """)
-    return input("Seciminizi yapin kral: ")
+    return input("Seciminizi yapin kral: ").strip()
 
 def ulke_bul(ip):
     """IP adresinin ulkesini sorgular."""
     try:
-        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=3, verify=True)
-        if response.get("status") == "success":
-            return f"{response.get('country')} ({response.get('countryCode')})"
+        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=3)
+        data = response.json()
+        if data.get("status") == "success":
+            return f"{data.get('country')} ({data.get('countryCode')})"
         return "Bilinmiyor"
-    except: return "Sorgulanamadi"
+    except Exception as e: 
+        return "Sorgulanamadi"
 
 def log_uret_tekli():
     """Gercek dunya verisi uretir."""
@@ -60,35 +62,52 @@ def log_uret_tekli():
         f.write(log_entry)
 
 def monitor_ips_otomatik():
+    ban_sayaci=0;
     print(f"\n\033[93m[*] OTOMATIK SIMULASYON BASLADI! {LOG_FILE} izleniyor...\033[0m")
     if os.path.exists(LOG_FILE): os.remove(LOG_FILE)
     open(LOG_FILE, 'a').close()
     file_size = 0 
     
     try:
-        while True:
-            log_uret_tekli()
+        while ban_sayaci < 5: #Sınır koyduk
+            log_uret_tekli() # Simülasyon için log üretir
             current_size = os.path.getsize(LOG_FILE)
+
             if current_size > file_size:
                 with open(LOG_FILE, 'r') as f:
                     f.seek(file_size)
                     for line in f:
+                        if ban_sayaci >= 5: break # 5 olduysa daha fazla satır okuma
                         ip_match = re.search(ip_pattern, line)
                         attack_match = re.search(suspicious_pattern, line, re.IGNORECASE)
-                        if attack_match and ip_match:
+                        # Sadece Pattern + IP + 403 status kodu varsa işlem yap
+                        if attack_match and ip_match and "403" in line:
+                            ban_sayaci += 1
                             attacker_ip = ip_match.group(1)
                             ulke = ulke_bul(attacker_ip)
-                            print(f"\n\033[91m[!] SALDIRI YAKALANDI: {attacker_ip} [%s]\033[0m" % ulke)
+                            print(f"\n\033[91m[{ban_sayaci}/5] SALDIRI ENGELLENDI: {attacker_ip} [{ulke}]\033[0m")
+                            
                             with open(BLOCKED_IPS_FILE, 'a') as f_block:
                                 f_block.write(f"{attacker_ip} - {ulke} - {time.ctime()}\n")
-                            if GERCEK_BAN_AT(attacker_ip):
-                                istihbarat_modu(otomatik=True)
-                                print("\n\033[96m[M] Menuye Don / [D] Izlemeye Devam Et\033[0m")
-                                if input("> ").upper().strip() == "M": return
+                        
+                            GERCEK_BAN_AT(attacker_ip)
+                            print(f"\033[92m[+] {attacker_ip} Banlanan ip firewall'a taşindi.\033[0m")
+                            
                 file_size = current_size
-            time.sleep(1)
+            time.sleep(0.8)
+        # 5 tane olunca döngü biter ve buraya gelir
+        print("\n\033[94m[!] HEDEF BAN SAYISINA ULASILDI. ANALIZ RAPORUNA GECILIYOR...\033[0m")
+        time.sleep(1.5)
+        istihbarat_modu(otomatik=True) # Raporu çat diye ekrana basar
+        print("\n\033[96m[M] Menuye Don / [D] Yeniden Baslat\033[0m")
+        secim = input("> ").upper().strip()
+        
+        if secim == "D":
+            monitor_ips_otomatik() # Başa sar
+        else:
+            return # Menüye dön
     except KeyboardInterrupt:
-        pass
+        print("\n[!] Izleme durduruldu.")
 
 def GERCEK_BAN_AT(ip):
     """Platformu tespit eder ve uygun Firewall kuralini ekler."""
@@ -111,7 +130,7 @@ def istihbarat_modu(otomatik=False):
     if not otomatik: input("\nMenuye donmek icin Enter'a bas...")
 
 def john_the_ripper_logic(target_hash, algo):
-    """Hibrit Motor: Once dahili wordlist, sonra John the Ripper denemesi."""
+    """Hibrit Motor: John varsa kullanir, yoksa hashlib ile devam eder."""
     # 1. DAHILI WORDLIST MOTORU
     if os.path.exists(WORDLIST_FILE):
         with open(WORDLIST_FILE, "r", encoding="utf-8", errors="ignore") as f:
@@ -157,7 +176,7 @@ def ollama_siber_analiz(target_hash, algo):
     """AI Baglantisi koparsa profesyonel yedek raporu sunar."""
     try:
         url = "http://localhost:11434/api/generate"
-        prompt = f"Sen bir siber güvenlik uzmanısın. Şu {algo} hashini analiz et: {target_hash}. Teknik risk raporu yaz."
+        prompt = f"Sen bir siber güvenlik uzmanisin. Şu {algo} hashini analiz et: {target_hash}. Teknik risk raporu yaz."
         response = requests.post(url, json={"model": "llama3", "prompt": prompt, "stream": False}, timeout=60)
         if response.status_code == 200: return response.json().get("response")
     except: pass
@@ -213,11 +232,18 @@ def cilingir_modu():
 
 if __name__ == "__main__":
     while True:
-        s = menu_goster()
-        if s == "1": monitor_ips_otomatik()
-        elif s == "2": cilingir_modu()
-        elif s == "3": istihbarat_modu()
-        elif s == "0":
+        secim = menu_goster()
+
+        #HATA KONTROLÜ
+        if not secim.isdigit(): # Eğer giriş tamamen rakam değilse
+            print("\n\033[91m[!] FORMAT YANLIS! Lutfen sadece listedeki rakamlardan birini giriniz.\033[0m")
+            time.sleep(1.5)
+            continue # Döngünün başına dön, menüyü tekrar göster
+           
+        if secim == "1": monitor_ips_otomatik()
+        elif secim == "2": cilingir_modu()
+        elif secim == "3": istihbarat_modu()
+        elif secim == "0":
             os.system('cls' if os.name == 'nt' else 'clear')
             # 1;38;45 -> 1: Kalın Yazı, 38: Beyaz Yazı, 45: Mor Arka Plan
             print("\n" * 3)
@@ -227,3 +253,7 @@ if __name__ == "__main__":
             print("\n" * 3)
             time.sleep(2)
             break
+        else:
+            # Rakam girildi ama listede yoksa (örn: 5)
+            print("\n\033[93m[?] Girdiginiz numara menude yok. Tekrar deneyin.\033[0m")
+            time.sleep(1.5)
